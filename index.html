@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PopChoice</title>
+
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="sky"></div>
+    <main class="app">
+      <!-- =======================================
+                    QUESTION SCREEN
+        ======================================== -->
+
+      <section id="questionView" class="screen">
+        <div class="logo">
+          <img src="images/popcorn.png" alt="PopChoice Logo" class="logo-img" />
+
+          <h1>PopChoice</h1>
+
+          <p class="subtitle">
+            Your personal AI movie & TV recommendation assistant
+          </p>
+        </div>
+
+        <div class="questions">
+          <div class="question">
+            <label for="favoriteMovie">
+              🍿 What's your favorite movie or TV show?
+            </label>
+
+            <textarea
+              id="favoriteMovie"
+              placeholder="Example: The Shawshank Redemption because it never gives up hope."
+            ></textarea>
+          </div>
+
+          <div class="question">
+            <label for="movieEra">
+              📅 Are you looking for something modern or classic?
+            </label>
+
+            <textarea
+              id="movieEra"
+              placeholder="Example: I'd love something released after 2015."
+            ></textarea>
+          </div>
+
+          <div class="question">
+            <label for="movieMood">
+              🎭 What kind of mood are you in today?
+            </label>
+
+            <textarea
+              id="movieMood"
+              placeholder="Example: Something fun, adventurous and exciting."
+            ></textarea>
+          </div>
+        </div>
+
+        <button id="recommendBtn">Find My Movies 🎬</button>
+      </section>
+
+      <!-- =======================================
+                    LOADING SCREEN
+        ======================================== -->
+
+      <section id="loadingView" class="screen hidden">
+        <div class="logo">
+          <img src="images/popcorn.png" alt="PopChoice Logo" class="logo-img" />
+
+          <h1>PopChoice</h1>
+        </div>
+
+        <div class="loading">
+          <div class="spinner"></div>
+
+          <h2>Finding Your Perfect Match...</h2>
+
+          <p>
+            Our AI is searching thousands of movies, understanding your taste,
+            and selecting recommendations just for you.
+          </p>
+        </div>
+      </section>
+
+      <!-- =======================================
+                    RESULT SCREEN
+        ======================================== -->
+
+      <section id="resultView" class="screen hidden">
+        <div class="logo">
+          <img src="images/popcorn.png" alt="PopChoice Logo" class="logo-img" />
+
+          <h1>PopChoice</h1>
+
+          <p class="subtitle">Here are your personalized recommendations</p>
+        </div>
+
+        <div class="carousel-wrapper">
+          <button id="prevBtn" class="carousel-btn" aria-label="Previous Movie">
+            ❮
+          </button>
+
+          <div class="carousel-viewport">
+            <div id="carousel" class="carousel">
+              <!-- Cards added dynamically -->
+            </div>
+          </div>
+
+          <button id="nextBtn" class="carousel-btn" aria-label="Next Movie">
+            ❯
+          </button>
+        </div>
+
+        <button id="restartBtn">🍿 Recommend Again</button>
+      </section>
+    </main>
+
+    <div class="shooting-star"></div>
+    <div class="shooting-star second"></div>
+    <div class="shooting-star third"></div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

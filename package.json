@@ -1,0 +1,20 @@
+{
+  "name": "PopChoice",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/server.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.2",
+    "axios": "^1.18.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "openai": "^4.12.3",
+    "vite": "^7.0.0"
+  }
+}
