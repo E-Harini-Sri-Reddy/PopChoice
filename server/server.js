@@ -11,14 +11,19 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({
-  path: path.join(__dirname, "../.env"),
-});
+dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+/* ===================================================
+                SERVE FRONTEND
+=================================================== */
+
+const distPath = path.join(__dirname, "../dist");
+app.use(express.static(distPath));
 
 const PORT = process.env.PORT || 3001;
 
@@ -483,11 +488,8 @@ app.post("/recommend", async (req, res) => {
                 HEALTH CHECK
 =================================================== */
 
-app.get("/", (req, res) => {
-  res.json({
-    status: "running",
-    service: "PopChoice API",
-  });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 /* ===================================================

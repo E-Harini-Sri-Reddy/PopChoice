@@ -123,6 +123,11 @@ async function getRecommendation() {
       }),
     });
 
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "Server error");
+    }
+
     const data = await response.json();
 
     if (!data.movies) {
