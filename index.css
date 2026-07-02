@@ -436,17 +436,12 @@ button:disabled{
     line-height:1.4;
 }
 
-.card p{
-    padding:
-        0 18px 20px;
-    color:var(--muted);
-    font-size:.93rem;
-    line-height:1.7;
-    display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:6;
-    overflow:hidden;
-
+.card p {
+    padding: 0 18px 20px;
+    color: var(--muted);
+    font-size: .93rem;
+    line-height: 1.7;
+    /* Removed line-clamp constraints to allow natural layout height */
 }
 
 /* ===================================================
