@@ -5,11 +5,19 @@ import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
 import axios from "axios";
 
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const distPath = path.join(__dirname, "../dist");
+
+console.log("Server dir:", __dirname);
+console.log("Dist path:", distPath);
+console.log("Dist exists:", fs.existsSync(distPath));
+console.log("Index exists:", fs.existsSync(path.join(distPath, "index.html")));
 
 dotenv.config();
 
@@ -22,7 +30,6 @@ app.use(express.json());
                 SERVE FRONTEND
 =================================================== */
 
-const distPath = path.join(__dirname, "../dist");
 app.use(express.static(distPath));
 
 const PORT = process.env.PORT || 3001;
@@ -488,18 +495,19 @@ app.post("/recommend", async (req, res) => {
                 HEALTH CHECK
 =================================================== */
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
+app.get("/health", (req, res) => {
+  res.json({
+    status: "running",
+    service: "PopChoice API",
+  });
 });
 
 /* ===================================================
                 SERVE FRONTEND
 =================================================== */
 
-app.use(express.static(path.join(__dirname, "../dist")));
-
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 /* ===================================================
